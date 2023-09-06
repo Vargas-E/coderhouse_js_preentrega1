@@ -190,8 +190,6 @@ const selectPokemon1 = (value) => {
   let pokemon;
   for (const poke of pokemonDb) {
     if (value == poke.name) {
-      console.log("poke:", poke);
-
       pokemon = new Pokemon(poke);
     }
   }
@@ -224,8 +222,6 @@ const selectPokemon2 = (value) => {
   let pokemon;
   for (const poke of pokemonDb) {
     if (value == poke.name) {
-      console.log("poke:", poke);
-
       pokemon = new Pokemon(poke);
     }
   }
