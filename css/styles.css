@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap");
+
+
+* {
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
+
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Lato";
+    background-image: url("../assets/background.jpg");
+    background-size: 100%;
+    background-repeat: "no-repeat";
+
+}
+
+main {
+    display: flex;
+    align-self: center;
+    justify-self: center;
+    flex-direction: column;
+}
+
+.mainContainer {
+    background-color: red;
+    opacity: 0.8;
+    border-radius: 10px;
+
+}
+
+.cardsContainer {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+    width: 1000px;
+    height: 600px;
+}
+
+.pokemonSelectorContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1rem 0;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.pokemonContainer {
+    border: 2px solid black;
+    border-radius: 12px;
+    width: 45%;
+    padding: 2rem;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+}
+
+.pokemonName {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.pokemonHpContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.pokemonHp {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 1rem;
+}
+
+.attackContainer {
+    margin: 0.5rem 0;
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 1rem;
+    vertical-align: middle;
+    cursor: pointer;
+    width: 100%;
+}
+
+.attackContainer:hover {
+    background-color: rgb(175, 175, 175);
+}
+
+.attackName {
+    padding: 0.5rem;
+    width: 15%;
+    vertical-align: middle;
+    font-weight: bold;
+}
+
+.attackDescription {
+    padding: 0.5rem;
+    width: 85%;
+}
+
+.pokemonImageContainer {
+    display: flex;
+    align-self: center;
+    width: 50%;
+    height: 40%;
+}
+
+.pokemonImage1 {
+    transform: scaleX(-1);
+    object-fit:fill;
+    width: 100%;
+    height: 100%;
+}
+
+.pokemonImage2 {
+    object-fit:fill;
+    width: 100%;
+    height: 100%;
+}
+
+#log {
+    border: 2px solid black;
+    border-radius: 12px;
+    background-color: white;
+    padding: 1rem;
+    margin: 0.5rem 2rem;
+    min-height: 100px;
+    max-height: 100px;
+    overflow-y: scroll;
+}

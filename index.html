@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <main>
+        <div class="pokemonSelectorContainer">
+            <div>
+                <select id="pokemonSelector1" name="select">
+                    <option value="Charmander" selected>Charmander</option>
+                    <option value="Squirtle">Squirtle</option>
+                    <option value="Bulbasaur">Bulbasaur</option>
+                    <option value="Pikachu">Pikachu</option>
+                    <option value="Geodude">Geodude</option>
+
+                </select>
+                <button id="buttonPokemon1Confirm"
+                    onclick="selectPokemon1(document.getElementById('pokemonSelector1').value)">Seleccionar pokemon
+                    1</button>
+            </div>
+            <button onclick="restartGame()">Restart</button>
+            <div>
+
+                <button id="buttonPokemon2Confirm"
+                    onclick="selectPokemon2(document.getElementById('pokemonSelector2').value)">Seleccionar pokemon
+                    2</button>
+                <select id="pokemonSelector2" name="select">
+                    <option value="Charmander" selected>Charmander</option>
+                    <option value="Squirtle">Squirtle</option>
+                    <option value="Bulbasaur">Bulbasaur</option>
+                    <option value="Pikachu">Pikachu</option>
+                    <option value="Geodude">Geodude</option>
+
+                </select>
+            </div>
+
+        </div>
+        <div class="mainContainer">
+            <div class="cardsContainer">
+                <div class="pokemonContainer">
+                    <div class="pokemonName" id="pokemonName1"></div>
+                    <div id="pokemonType1"></div>
+                    <div class="pokemonImageContainer">
+                        <img src="./assets/pokeball.png" class="pokemonImage1" id="pokemonImage1" />
+                    </div>
+                    <div class="pokemonHpContainer">
+                        <div class="pokemonHp" id="pokemonHp1"></div>
+                    </div>
+                    <button onclick="selectedPokemon1.attack(0, 1)" id="pokemon1attack1" class="attackContainer">
+                        <div class="attackName" id="pokemon1attackName1">
+                            <div></div>
+                        </div>
+                        <div class="attackDescription" id="pokemon1attackDescription1"></div>
+                    </button>
+                    <button onclick="selectedPokemon1.attack(1, 1)" id="pokemon1attack2" class="attackContainer">
+                        <div class="attackName" id="pokemon1attackName2"></div>
+                        <div class="attackDescription" id="pokemon1attackDescription2"></div>
+                    </button>
+                </div>
+
+
+                <div class="pokemonContainer">
+                    <div class="pokemonName" id="pokemonName2"></div>
+                    <div id="pokemonType2"></div>
+
+                    <div class="pokemonImageContainer">
+                        <img src="./assets/pokeball.png" class="pokemonImage2" id="pokemonImage2" />
+                    </div>
+                    <div class="pokemonHpContainer">
+                        <div class="pokemonHp" id="pokemonHp2"></div>
+                    </div>
+                    <div>
+                        <button onclick="selectedPokemon2.attack(0, 2)" id="pokemon2attack1" class="attackContainer">
+                            <div class="attackName" id="pokemon2attackName1"></div>
+                            <div class="attackDescription" id="pokemon2attackDescription1"></div>
+                        </button>
+                        <button onclick="selectedPokemon2.attack(1, 2)" id="pokemon2attack2" class="attackContainer">
+                            <div class="attackName" id="pokemon2attackName2"></div>
+                            <div class="attackDescription" id="pokemon2attackDescription2"></div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="log">
+
+            </div>
+        </div>
+    </main>
+    <script src="scripts.js"></script>
+</body>
+
+</html>
