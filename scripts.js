@@ -1,10 +1,23 @@
 let log = "";
 
-disableButtons = () => {
-  document.getElementById("pokemon1attack1").disabled = true;
-  document.getElementById("pokemon1attack2").disabled = true;
-  document.getElementById("pokemon2attack1").disabled = true;
-  document.getElementById("pokemon2attack2").disabled = true;
+const changeInnerHTML = (id, property, value) => {
+  document.getElementById(id)[property] = value;
+};
+
+const disableButtons = () => {
+  changeInnerHTML("pokemon1attack1", "disabled", true);
+  changeInnerHTML("pokemon1attack2", "disabled", true);
+  changeInnerHTML("pokemon2attack1", "disabled", true);
+  changeInnerHTML("pokemon2attack2", "disabled", true);
+};
+
+const checkSelectedPokemons = () => {
+  if (selectedPokemon1 && selectedPokemon2) {
+    changeInnerHTML("pokemon1attack1", "disabled", false);
+    changeInnerHTML("pokemon1attack2", "disabled", false);
+    changeInnerHTML("pokemon2attack1", "disabled", false);
+    changeInnerHTML("pokemon2attack2", "disabled", false);
+  }
 };
 
 const restartGame = () => {
@@ -12,29 +25,26 @@ const restartGame = () => {
   changeLog(log);
   selectedPokemon1 = null;
   selectedPokemon2 = null;
-  document.getElementById("pokemonName1").innerHTML = ``;
-  document.getElementById("pokemonType1").innerHTML = ``;
-  document.getElementById("pokemonHp1").innerHTML = ``;
-  document.getElementById("pokemon1attackName1").innerHTML = "";
-  document.getElementById("pokemon1attackDescription1").innerHTML = "";
-  document.getElementById("pokemon1attackName2").innerHTML = "";
-  document.getElementById("pokemon1attackDescription2").innerHTML = "";
-  document.getElementById("buttonPokemon1Confirm").disabled = false;
-  document.getElementById("pokemonImage1").src = "./assets/pokeball.png";
-  //2
-  document.getElementById("pokemonName2").innerHTML = ``;
-  document.getElementById("pokemonType2").innerHTML = ``;
-  document.getElementById("pokemonHp2").innerHTML = ``;
-  document.getElementById("pokemon2attackName1").innerHTML = "";
-  document.getElementById("pokemon2attackDescription1").innerHTML = "";
-  document.getElementById("pokemon2attackName2").innerHTML = "";
-  document.getElementById("pokemon2attackDescription2").innerHTML = "";
-  document.getElementById("buttonPokemon2Confirm").disabled = false;
-  document.getElementById("pokemonImage2").src = "./assets/pokeball.png";
-  document.getElementById("pokemon1attack1").disabled = false;
-  document.getElementById("pokemon1attack2").disabled = false;
-  document.getElementById("pokemon2attack1").disabled = false;
-  document.getElementById("pokemon2attack2").disabled = false;
+  changeInnerHTML("pokemonName1", "innerHTML", ``);
+  changeInnerHTML("pokemonType1", "innerHTML", "");
+  changeInnerHTML("pokemonHp1", "innerHTML", "");
+  changeInnerHTML("pokemon1attackName1", "innerHTML", "");
+  changeInnerHTML("pokemon1attackDescription1", "innerHTML", "");
+  changeInnerHTML("pokemon1attackName2", "innerHTML", "");
+  changeInnerHTML("pokemon1attackDescription2", "innerHTML", "false");
+  changeInnerHTML("buttonPokemon1Confirm", "disabled", false);
+  changeInnerHTML("pokemonImage1", "src", "./assets/pokeball.png");
+
+  changeInnerHTML("pokemonName2", "innerHTML", ``);
+  changeInnerHTML("pokemonType2", "innerHTML", "");
+  changeInnerHTML("pokemonHp2", "innerHTML", "");
+  changeInnerHTML("pokemon2attackName1", "innerHTML", "");
+  changeInnerHTML("pokemon2attackDescription1", "innerHTML", "");
+  changeInnerHTML("pokemon2attackName2", "innerHTML", "");
+  changeInnerHTML("pokemon2attackDescription2", "innerHTML", "false");
+  changeInnerHTML("buttonPokemon2Confirm", "disabled", false);
+  changeInnerHTML("pokemonImage2", "src", "./assets/pokeball.png");
+  disableButtons();
 };
 
 const changeLog = (text, combatEnd) => {
@@ -195,26 +205,41 @@ const selectPokemon1 = (value) => {
   }
   selectedPokemon1 = new Pokemon(pokemon);
   if (selectedPokemon1) {
-    document.getElementById(
-      "pokemonName1"
-    ).innerHTML = `${selectedPokemon1.name}`;
-    document.getElementById(
-      "pokemonType1"
-    ).innerHTML = `Type: ${selectedPokemon1.type}`;
-    document.getElementById(
-      "pokemonHp1"
-    ).innerHTML = `Hp: ${selectedPokemon1.hp}/${selectedPokemon1.maxHp}`;
-    document.getElementById("pokemon1attackName1").innerHTML =
-      selectedPokemon1.attacks[0].name;
-    document.getElementById("pokemon1attackDescription1").innerHTML =
-      selectedPokemon1.attacks[0].description;
-    document.getElementById("pokemon1attackName2").innerHTML =
-      selectedPokemon1.attacks[1].name;
-    document.getElementById("pokemon1attackDescription2").innerHTML =
-      selectedPokemon1.attacks[1].description;
-    document.getElementById("buttonPokemon1Confirm").disabled = true;
-    document.getElementById("pokemonImage1").src = selectedPokemon1.pic;
+    changeInnerHTML("pokemonName1", "innerHTML", `${selectedPokemon1.name}`);
+    changeInnerHTML(
+      "pokemonType1",
+      "innerHTML",
+      `Type: ${selectedPokemon1.type}`
+    );
+    changeInnerHTML(
+      "pokemonHp1",
+      "innerHTML",
+      `Hp: ${selectedPokemon1.hp}/${selectedPokemon1.maxHp}`
+    );
+    changeInnerHTML(
+      "pokemon1attackName1",
+      "innerHTML",
+      selectedPokemon1.attacks[0].name
+    );
+    changeInnerHTML(
+      "pokemon1attackDescription1",
+      "innerHTML",
+      selectedPokemon1.attacks[0].description
+    );
+    changeInnerHTML(
+      "pokemon1attackName2",
+      "innerHTML",
+      selectedPokemon1.attacks[1].name
+    );
+    changeInnerHTML(
+      "pokemon1attackDescription2",
+      "innerHTML",
+      selectedPokemon1.attacks[1].description
+    );
+    changeInnerHTML("buttonPokemon1Confirm", "disabled", true);
+    changeInnerHTML("pokemonImage1", "src", selectedPokemon1.pic);
     changeLog(`Player 1 selected ${pokemon.name}`);
+    checkSelectedPokemons();
   }
 };
 
@@ -227,26 +252,41 @@ const selectPokemon2 = (value) => {
   }
   selectedPokemon2 = new Pokemon(pokemon);
   if (selectedPokemon2) {
-    document.getElementById(
-      "pokemonName2"
-    ).innerHTML = `${selectedPokemon2.name}`;
-    document.getElementById(
-      "pokemonType2"
-    ).innerHTML = `Type: ${selectedPokemon2.type}`;
-    document.getElementById(
-      "pokemonHp2"
-    ).innerHTML = `Hp: ${selectedPokemon2.hp}/${selectedPokemon2.maxHp}`;
-    document.getElementById("pokemon2attackName1").innerHTML =
-      selectedPokemon2.attacks[0].name;
-    document.getElementById("pokemon2attackDescription1").innerHTML =
-      selectedPokemon2.attacks[0].description;
-    document.getElementById("pokemon2attackName2").innerHTML =
-      selectedPokemon2.attacks[1].name;
-    document.getElementById("pokemon2attackDescription2").innerHTML =
-      selectedPokemon2.attacks[1].description;
-    document.getElementById("buttonPokemon2Confirm").disabled = true;
-    document.getElementById("pokemonImage2").src = selectedPokemon2.pic;
+    changeInnerHTML("pokemonName2", "innerHTML", `${selectedPokemon2.name}`);
+    changeInnerHTML(
+      "pokemonType2",
+      "innerHTML",
+      `Type: ${selectedPokemon2.type}`
+    );
+    changeInnerHTML(
+      "pokemonHp2",
+      "innerHTML",
+      `Hp: ${selectedPokemon2.hp}/${selectedPokemon2.maxHp}`
+    );
+    changeInnerHTML(
+      "pokemon2attackName1",
+      "innerHTML",
+      selectedPokemon2.attacks[0].name
+    );
+    changeInnerHTML(
+      "pokemon2attackDescription1",
+      "innerHTML",
+      selectedPokemon2.attacks[0].description
+    );
+    changeInnerHTML(
+      "pokemon2attackName2",
+      "innerHTML",
+      selectedPokemon2.attacks[1].name
+    );
+    changeInnerHTML(
+      "pokemon2attackDescription2",
+      "innerHTML",
+      selectedPokemon2.attacks[1].description
+    );
+    changeInnerHTML("buttonPokemon2Confirm", "disabled", true);
+    changeInnerHTML("pokemonImage2", "src", selectedPokemon2.pic);
     changeLog(`Player 2 selected ${pokemon.name}`);
+    checkSelectedPokemons();
   }
 };
 
